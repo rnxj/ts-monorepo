@@ -1,0 +1,9 @@
+pre-commit:
+  commands:
+    lint:
+      run: pnpm run lint
+
+commit-msg:
+  commands:
+    commits:
+      run: pnpm run lint:commit
