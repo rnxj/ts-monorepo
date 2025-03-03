@@ -1,0 +1,22 @@
+{
+  "name": "monorepo",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "biome:check": "biome check .",
+    "biome:fix": "biome check . --write",
+    "lint:commit": "commitlint --edit"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "lefthook": "^1.11.2",
+    "turbo": "^2.4.4"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
