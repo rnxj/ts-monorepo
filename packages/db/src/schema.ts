@@ -19,3 +19,5 @@ export const CreatePostSchema = createInsertSchema(Post, {
   createdAt: true,
   updatedAt: true,
 });
+
+export * from "./auth-schema";
