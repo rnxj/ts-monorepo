@@ -4,3 +4,22 @@ packages:
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - lefthook
+
+
+catalog:
+  "@tanstack/react-query": ^5.67.0
+  "@trpc/client": ^11.0.0-rc.446
+  "@trpc/react-query": ^11.0.0-rc.446
+  "@trpc/server": ^11.0.0-rc.446
+  eslint: ^9
+  tailwindcss: ^4
+  typescript: ^5
+  zod: ^3.24.2
+  better-auth: ^1.2.4
+
+catalogs:
+  react19:
+    react: ^19.0.0
+    react-dom: ^19.0.0
+    "@types/react": ^19
+    "@types/react-dom": ^19

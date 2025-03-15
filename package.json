@@ -4,6 +4,10 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "db:generate": "turbo -F @repo/db generate",
+    "db:migrate": "turbo -F @repo/db migrate",
+    "db:push": "turbo -F @repo/db push",
+    "db:studio": "turbo -F @repo/db studio",
     "lint": "turbo lint",
     "biome:check": "biome check .",
     "biome:fix": "biome check . --write",
@@ -11,13 +15,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@commitlint/cli": "^19.7.1",
-    "@commitlint/config-conventional": "^19.7.1",
-    "lefthook": "^1.11.2",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "lefthook": "^1.11.3",
     "turbo": "^2.4.4"
   },
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.6.2",
   "engines": {
-    "node": ">=22"
+    "node": ">=20"
   }
 }

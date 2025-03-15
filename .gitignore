@@ -17,3 +17,13 @@ out
 
 # Vercel
 .vercel
+
+# ts
+.cache
+
+# db
+.drizzle
+db.sqlite
+
+# output
+dist

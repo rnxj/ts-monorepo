@@ -8,38 +8,47 @@ export function LatestPost() {
   const [latestPost] = api.post.getLatest.useSuspenseQuery();
 
   const utils = api.useUtils();
-  const [name, setName] = useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const createPost = api.post.create.useMutation({
     onSuccess: async () => {
       await utils.post.invalidate();
-      setName("");
+      setTitle("");
+      setContent("");
     },
   });
 
   return (
-    <div className="w-full max-w-xs">
+    <div className="w-full max-w-md">
       {latestPost ? (
-        <p className="truncate">Your most recent post: {latestPost.name}</p>
+        <p>Your most recent post: {latestPost.title}</p>
       ) : (
         <p>You have no posts yet.</p>
       )}
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          createPost.mutate({ name });
+          createPost.mutate({ title, content });
         }}
-        className="flex flex-col gap-2"
+        className="mt-4 flex flex-col gap-3"
       >
         <input
           type="text"
           placeholder="Title"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-full px-4 py-2 text-black"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="border p-2"
+        />
+        <textarea
+          placeholder="Content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className="border p-2"
+          rows={4}
         />
         <button
           type="submit"
-          className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
+          className="border bg-gray-100 p-2 hover:bg-gray-200"
           disabled={createPost.isPending}
         >
           {createPost.isPending ? "Submitting..." : "Submit"}
