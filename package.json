@@ -4,6 +4,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "ui:add": "turbo -F @repo/ui add",
     "auth:generate": "turbo -F @repo/auth generate",
     "db:generate": "turbo -F @repo/db generate",
     "db:migrate": "turbo -F @repo/db migrate",

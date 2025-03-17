@@ -3,6 +3,9 @@
 import { LatestPost } from "@/app/_components/post";
 import { api } from "@/trpc/react";
 import { authClient } from "@repo/auth/client";
+import { Button } from "@repo/ui/components/button";
+import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@repo/ui/components/card";
+import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
@@ -20,22 +23,21 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-[calc(100vh-65px)] flex-col items-center justify-center bg-gray-50 text-gray-900 p-4">
-      <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-        <div className="mb-8 flex w-full items-center justify-between border-b border-gray-200 pb-4">
-          <h1 className="text-3xl font-semibold">Post Management</h1>
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-lg border border-gray-300 hover:bg-gray-50 hover:border-gray-400 transition-colors"
-          >
-            Logout
-          </button>
-        </div>
-
-        <p className="mb-6 text-gray-600">{hello?.greeting ?? "Loading..."}</p>
-        <LatestPost />
-      </div>
+    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="flex-row items-center justify-between space-y-0">
+          <CardTitle>{hello?.greeting ?? "Loading..."}</CardTitle>
+          <CardAction>
+            <Button variant="outline" size="sm" onClick={handleLogout}>
+              <LogOut className="mr-2" />
+              Logout
+            </Button>
+          </CardAction>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <LatestPost />
+        </CardContent>
+      </Card>
     </main>
   );
 }

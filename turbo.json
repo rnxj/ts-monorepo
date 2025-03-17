@@ -32,6 +32,10 @@
     "studio": {
       "cache": false,
       "persistent": true
+    },
+    "add": {
+      "cache": false,
+      "persistent": true
     }
   },
   "globalEnv": ["DATABASE_URL"],
