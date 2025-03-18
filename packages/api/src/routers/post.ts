@@ -1,7 +1,7 @@
 import { Post } from "@repo/db/schema";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { z } from "zod";
-import { publicProcedure } from "../trpc";
+import { protectedProcedure, publicProcedure } from "../trpc";
 export const postRouter = {
   hello: publicProcedure.input(z.object({ text: z.string() })).query(({ input }) => {
     return {
@@ -9,7 +9,7 @@ export const postRouter = {
     };
   }),
 
-  create: publicProcedure
+  create: protectedProcedure
     .input(z.object({ title: z.string().min(1), content: z.string().min(1) }))
     .mutation(async ({ ctx, input }) => {
       await ctx.db.insert(Post).values({
@@ -18,7 +18,7 @@ export const postRouter = {
       });
     }),
 
-  getLatest: publicProcedure.query(async ({ ctx }) => {
+  getLatest: protectedProcedure.query(async ({ ctx }) => {
     const post = await ctx.db.query.Post.findFirst({
       orderBy: (posts, { desc }) => [desc(posts.createdAt)],
     });

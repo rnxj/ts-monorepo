@@ -1,6 +1,5 @@
 import { appRouter } from "@repo/api/root";
 import { createTRPCContext } from "@repo/api/trpc";
-import { auth } from "@repo/auth";
 import { env } from "@repo/env/web";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import type { NextRequest } from "next/server";
@@ -10,12 +9,8 @@ import type { NextRequest } from "next/server";
  * handling a HTTP request (e.g. when you make requests from Client Components).
  */
 const createContext = async (req: NextRequest) => {
-  const session = await auth.api.getSession({
-    headers: req.headers,
-  });
   return createTRPCContext({
     headers: req.headers,
-    session,
   });
 };
 

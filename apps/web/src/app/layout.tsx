@@ -1,4 +1,5 @@
 import { TRPCReactProvider } from "@/trpc/react";
+import { Toaster } from "@repo/ui/components/sonner";
 import "@repo/ui/globals.css";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <Toaster />
       </body>
     </html>
   );
